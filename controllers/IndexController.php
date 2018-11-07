@@ -9,25 +9,23 @@ class IndexController extends Controller{
   }
   public function index(){
     $this->pageData['title'] = "Главная";
-    if(isset($_SESSION['user'])){
-      $this->pageData['session']=false;
-
-    }
-    else{
-      $this->pageData['session']=true;
-    }
     if(!empty($_POST)){
-      if(!$this->login()){
-        $this->pageData['error'] = "Неправильный логин или пароль";
+      if($this->login()){
+        $this->pageData['loginfo']="Вы успешно вошли.";
+      }else{
+        $this->pageData['loginfo']="Неверный логин или пароль.";
       }
     }
-     $this->view->render($this->pageTpl,$this->pageData);
+    if(!empty($_SESSION['user'])){
+      $this->pageData['session']=true;
+    }else{
+      $this->pageData['session']=false;
+    }
+    $this->view->render($this->pageTpl,$this->pageData);
   }
   
   public function login(){
-    if(!$this->model->checkUser()){
-      return false;
-    }
+    return $this->model->checkUser();
   }
   
    public function logout(){

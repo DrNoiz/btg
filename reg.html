@@ -15,20 +15,47 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-   <!-- Default form register -->
-<form class="text-center p-5" method="POST">
+   <div class="row justify-content-center">
+       <div class="col-xl-10">
+           <!-- Default form register -->
+   <form class="p-5" method="POST" action="test.php" enctype="multipart/form-data">
 
-    <p class="h4 mb-4">Регистрация</p>
-    <div class="row justify-content-center">
-        <div class="col-xl-8">
-            <input name="login" type="login" id="defaultRegisterFormLogin" class="form-control mb-4" placeholder="Логин">
-            <input name="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
-            <input name="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password">
-            <!-- Sign up button -->
-            <button class="btn btn-blue my-4 btn-block" type="submit">Зарегистрироваться</button>
+    <p class="h4 mb-4 text-center">Добавление товара</p>
+
+    <label for="nameInput">Название</label>
+    <input name="name" type="text" id="nameInput" class="form-control mb-4" placeholder="Название вашего товара">
+
+    <label for="priceInput">Цена</label>
+    <input name="price" type="text" id="priceInput" class="form-control mb-4" placeholder="цена вашего товара">
+
+    <label for="select">Выбирете категорию</label>
+    <select name="type" class="browser-default custom-select mb-4" id="select">
+        <option value="" disabled="" selected="">Ваша категория</option>
+        <option value="Brikcs">Кирпич и блоки</option>
+        <option value="Tools">Инструменты</option>
+        <option value="Isulation">Утепление и изоляция</option>
+        <option value="Fittings">Арматура</option>
+        <option value="Mixtures">Строительные смеси</option>
+        <option value="Fastener">Крепёжные материалы</option>
+    </select>
+
+    <div class="input-group mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Upload</span>
+        </div>
+        <div class="custom-file">
+            <input name="picture" accept="image/*" type="file" class="custom-file-input" id="fileInput" aria-describedby="fileInput">
+            <label class="custom-file-label" for="fileInput">File Label</label>
         </div>
     </div>
-</form>
+
+    <label for="textarea">Описание товара</label>
+    <textarea name="prodAbout" id="textarea" class="form-control mb-4" placeholder="Описание вашего товара"></textarea>
+
+    <button class="btn btn-info btn-block my-4" type="submit">Добавить</button>
+    </form>
+       </div>
+   </div>
 
     <!-- SCRIPTS -->
     <!-- JQuery -->

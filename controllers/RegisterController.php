@@ -12,7 +12,8 @@
             if(!empty($_POST)){
               if($this->register()){
                 $this->pageData['registerMsg'] = "Вы успешно зарегистрированы!";
-              }
+                $this->pageData['correctReg']=true;
+              }else $this->pageData['correctReg']=false;
             }
             $this->view->render($this->pageTpl,$this->pageData);
           }
@@ -22,7 +23,6 @@
             &&!empty($_POST['email'])
             &&!empty($_POST['password']);
             if($correctReg){
-                echo"sosi3";
                 $this->model->registerNewUser($_POST['login'], $_POST['email'], $_POST['password']);
                 return true;
               }
