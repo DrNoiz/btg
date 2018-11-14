@@ -19,7 +19,7 @@
 
 @media (max-width: 1199.98px) {
   .sidebar-fixed {
-    display: none; } }
+    } }
 .imgCategories{
     height: 200px;
     text-align: center;

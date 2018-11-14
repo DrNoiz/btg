@@ -9,6 +9,7 @@ class IndexModel extends Model{
       $req = $this->db->query($sql);
       if($req->num_rows){
         $_SESSION['user'] = $login;
+        $_SESSION['userId']=$req->fetch_row()[0];
         return true;
       } else{
         return false;

@@ -38,8 +38,7 @@ echo '<header>
                     <!--Menu-->
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                         <h6 class="dropdown-header">'.$_SESSION['user'].'</h6>
-                        <a class="dropdown-item" href="#">Аккаунт</a>
-                        <a class="dropdown-item" href="#">Добавить товар</a>
+                        <a class="dropdown-item" href="/account">Аккаунт</a>
                         <a class="dropdown-item" href="/logout">Выйти</a>
                     </div>
                 </div>';

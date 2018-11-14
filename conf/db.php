@@ -12,6 +12,7 @@ class DB{
     $db   = self::DB;
     try{
     $conn= new mysqli($host,$username,$password,$db);
+    $conn->set_charset("utf8");
     }catch(mysqli_sql_exception $e){
       die("Ошибка при подключении к БД: $e");
     }

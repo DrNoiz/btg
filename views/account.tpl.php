@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Главная</title>
+    <title><?php echo $pageData['title'];?></title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -21,9 +21,9 @@
                 <div class="col-md-3 ">
                      <div class="list-group ">
                       <a href="#" class="list-group-item">Аккаунт</a>
-                      <a href="#" class="list-group-item">Добавить товар</a>
-                      <a href="#" class="list-group-item">Менеджер товаров</a>
-                      <a href="#" class="list-group-item">На главную</a>
+                      <a href="../addproduct" class="list-group-item">Добавить товар</a>
+                      <a href="/account/products" class="list-group-item">Менеджер товаров</a>
+                      <a href="../" class="list-group-item">На главную</a>
                     </div> 
                 </div>
                 <div class="col-md-9">
@@ -40,15 +40,15 @@
                                         <tbody>
                                           <tr>
                                             <td>id: </td>
-                                            <td>mister_hell_rus</td>
+                                            <td><?php echo $pageData['user']['id']?></td>
                                           </tr>
                                           <tr>
                                             <td>Логин: </td>
-                                            <td>mister_hell_rus</td>
+                                            <td><?php echo $pageData['user']['login']?></td>
                                           </tr>
                                           <tr>
                                             <td>E-mail: </td>
-                                            <td>mister_hell_rus</td>
+                                            <td><?php echo $pageData['user']['email']?></td>
                                           </tr>
                                         </tbody>
                                       </table>
