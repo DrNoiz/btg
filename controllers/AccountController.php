@@ -1,21 +1,37 @@
 <?php 
 class AccountController extends Controller{
-    private $pageTplUser = '/views/account.tpl.php';
-    private $pageTplProducts = '/views/products.tpl.php';
     public function __construct(){
       $this->model = new AccountModel();
       $this->view = new View();
     }
 
     public function index(){
+        $this->pageTpl='/views/account.tpl.php';
         $this->pageData['title']="Ваш аккаунт";
-        if(empty($_SESSION['user'])) $this->pageData['accMsg']="Вы не вошли на сайте";
+        if(empty($_SESSION['user'])) {
+        $this->pageData['accMsg']="Вы не вошли на сайте";
+        }else{
+            if(!empty($_POST['correct'])){
+                if($this->model->correctProduct()){
+                    $this->pageData['corrMsg']='Вы успешно изменили товар';
+                }
+            }
         $this->pageData['user']=$this->model->getUser();
-        $this->view->render($this->pageTplUser,$this->pageData);
+        $this->pageData['products']=$this->model->getProducts();
+        if(!empty($_GET)){
+            if($_GET['type']=='correct'){
+                $this->pageTpl='/views/correct.tpl.php';
+            }else if($_GET['type']=='delete'){
+                $this->delete();
+            }
+        }
     }
-    public function products(){
-       $this->pageData['products']=$this->model->getProducts();
-       $this->view->render($this->pageTplProducts,$this->pageData);
+        $this->view->render($this->pageTpl,$this->pageData);
+    }
+    public function delete(){
+        if($this->model->deleteProduct()){
+            header("Location: /account");  
+        }
     }
 }
 ?>

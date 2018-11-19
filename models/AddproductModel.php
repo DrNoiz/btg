@@ -5,7 +5,6 @@ class AddproductModel extends Model{
         $newFile=$_FILES['picture'];
         move_uploaded_file($newFile['tmp_name'], ROOT.$newFileName);
 
-        echo mb_internal_encoding();
         $id=$_SESSION['userId'];
         $name=strip_tags($_POST['name']);
         $price=strip_tags($_POST['price']);
@@ -15,7 +14,6 @@ class AddproductModel extends Model{
 
         $sql="INSERT INTO products(id, user_id, name, price, type, subtype, about, picture)
         VALUES(NULL, '$id','$name','$price','$type','$subtype','$about','$newFileName')";
-        echo $sql;
         $this->db->query($sql);
     }
 }

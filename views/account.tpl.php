@@ -18,16 +18,19 @@
    
 		<div class="container-fluid">
             <div class="row">
-                <div class="col-md-3 ">
+                <div class="col-md-3">
                      <div class="list-group ">
-                      <a href="#" class="list-group-item">Аккаунт</a>
-                      <a href="../addproduct" class="list-group-item">Добавить товар</a>
-                      <a href="/account/products" class="list-group-item">Менеджер товаров</a>
+                      <a class="list-group-item" data-toggle="collapse" href="#collapseNav" 
+                        aria-expanded="false" aria-controls="collapseNav">Аккаунт</a>
+                      <a class="list-group-item" data-toggle="collapse" href="#collapseNav" 
+                        aria-expanded="false" aria-controls="collapseNav">Менеджер товаров</a>
+                      <a href="/addproduct" class="list-group-item">Добавить товар</a>
                       <a href="../" class="list-group-item">На главную</a>
                     </div> 
                 </div>
-                <div class="col-md-9">
-                    <div class="card">
+                <div class="col-xl-9 col-xl-offset-2">
+                    <div id="collapseNav" class="collapse show">
+                        <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3">
@@ -40,21 +43,57 @@
                                         <tbody>
                                           <tr>
                                             <td>id: </td>
-                                            <td><?php echo $pageData['user']['id']?></td>
+                                            <td><?php echo $pageData['user']['id'];?></td>
                                           </tr>
                                           <tr>
                                             <td>Логин: </td>
-                                            <td><?php echo $pageData['user']['login']?></td>
+                                            <td><?php echo $pageData['user']['login'];?></td>
                                           </tr>
                                           <tr>
                                             <td>E-mail: </td>
-                                            <td><?php echo $pageData['user']['email']?></td>
+                                            <td><?php echo $pageData['user']['email'];?></td>
                                           </tr>
                                         </tbody>
                                       </table>
                                 </div>
                             </div>
                         </div>
+                        </div>
+                    </div>
+                    <div id="collapseNav" class="collapse">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h4>Ваши товары</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row comtainer pt-3 justify-content-around">
+                            <?php
+                                for($i=0; $i<count($pageData['products']); $i++){
+                                    echo
+                                '<div class="col-xl-4 col-sm-12">
+                                    <div class="card mb-4 text-center">
+                                        <img src="'.$pageData['products'][$i]['picture'].'" class="card-img-top imgCategories">
+                                        <div class="card-body">
+                                            <h4 class="card-title">'.$pageData['products'][$i]['name'].'</h4>
+                                            <div class="row">
+                                                <div class="col-xl-6">
+                                                    <a href="account?type=correct&id='.$pageData['products'][$i]['id'].'"> <i class="fa fa-align-justify mr-3"></i></a>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <a href="account?type=delete&id='.$pageData['products'][$i]['id'].'"> <i class="fa fa-trash mr-3"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                                }
+                            ?>
+                        </div>
+
                     </div>
             </div>
         </div>

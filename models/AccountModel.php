@@ -27,5 +27,41 @@ class AccountModel extends Model{
         }
         return $products;
     }
+    public function deleteProduct(){
+        $flag=false;
+        $userId=$_SESSION['userId'];
+        $prodId=$_GET['id'];
+
+        $sql="SELECT * FROM products WHERE id='$prodId'";
+        $del="DELETE FROM products WHERE id='$prodId'";
+        $req = $this->db->query($sql);
+        $currentProd=$req->fetch_row();
+        if($userId==$currentProd[1]){
+            unlink(ROOT.$currentProd[7]);
+            $this->db->query($del);
+            $flag=true;
+        }
+        return $flag;
+    }
+    public function correctProduct(){
+        $flag=false;
+        $userId=$_SESSION['userId'];
+        $prodId=$_GET['id'];
+
+        $name=strip_tags($_POST['correct']['name']);
+        $price=strip_tags($_POST['correct']['price']);
+        $about=strip_tags($_POST['correct']['prodAbout']);
+
+        $sql="SELECT * FROM products WHERE id='$prodId'";
+        $correct="UPDATE products SET name='$name', price='$price', about='$about' WHERE id='$prodId'";
+        $req = $this->db->query($sql);
+
+        $currentProd=$req->fetch_row();
+        if($userId==$currentProd[1]){
+            $this->db->query($correct);
+            $flag=true;
+        }
+        return $flag;
+    }
 } 
 ?>

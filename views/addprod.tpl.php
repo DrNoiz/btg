@@ -18,8 +18,6 @@
    <div class="row justify-content-center">
        <div class="col-xl-10">
         <?php
-        print_r($_POST);
-        print_r($_FILES);
         if(empty($pageData['addMsg'])){
             echo '<form class="p-5" method="POST" enctype="multipart/form-data">';
             if(empty($_POST)){
@@ -37,10 +35,9 @@
         <option value="Fastener">Крепёжные материалы</option>
     </select>
 
-    <button class="btn btn-info btn-block my-4" type="submit">Далее</button>
+    <button class="btn btn-blue btn-block my-4" type="submit">Далее</button>
 FormContent;
             }else{
-                echo count($pageData['products'][$_POST['type']]);
                 echo<<<FormContent
                 <p class="h4 mb-4 text-center">Добавление товара</p>
 
@@ -74,12 +71,13 @@ FormContent;
                 <label for="textarea">Описание товара</label>
                 <textarea name="prodAbout" id="textarea" class="form-control mb-4" placeholder="Описание вашего товара"></textarea>
             
-                <button class="btn btn-info btn-block my-4" type="submit">Добавить</button>';
+                <button class="btn btn-blue btn-block my-4" type="submit">Добавить</button>';
             }
         echo '</form>';
         }else{
-            echo '<div class="text-center">'.$pageData['addMsg'].'</div>';
-            echo '<a href="../" class="btn btn-blue text-center">На главную</a>';
+            echo '<div class="text-center">'.$pageData['addMsg'].'
+            <a href="/account" class="btn btn-blue text-center">На главную</a>
+            </div>';
         }
     ?>
        </div>

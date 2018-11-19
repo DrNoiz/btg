@@ -21,7 +21,6 @@ class AddproductController extends Controller
             $correctAdd=!empty($_POST['name'])
             ||!empty($_POST['price'])||!empty($_POST['subtype'])
             ||!empty($_POST['prodAbout']);
-            echo $correctAdd? '1':'2';
             if($correctAdd&&!empty($_POST['type'])){
                 if($this->addProduct()){
 

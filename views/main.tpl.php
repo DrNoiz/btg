@@ -19,85 +19,105 @@
         <main class="pt-5 mx-lg-5">
             <div class="container-fluid mt-5">
                 <div class="row justify-content-around">
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                <?php 
+                if(!empty($_POST['name'])){
+                   if(empty($pageData['error'])){
+                    for($i=0; $i<count($pageData['products']); $i++){
+                        echo
+                    '<div class="col-xl-4 col-sm-12">
                         <div class="card mb-4 text-center">
-                            <img src="img/btgBrick1.jpg" class="card-img-top imgCategories">
+                            <img src="'.$pageData['products'][$i]['picture'].'" class="card-img-top imgCategories">
                             <div class="card-body">
-                                <h4 class="card-title">Кирпич и блоки</h4>
-                                <p class="card-text">(Мало- и крупногабаритные)</p>
-                                <button class="btn btn-blue">Перейти</button>
-                            </div>
-                            <div class="text-center card-footer">
-                                <p>Кря-кря</p>
+                                <h4 class="card-title">'.$pageData['products'][$i]['name'].'</h4>
+                                <h6 class="text-right">'.$pageData['products'][$i]['price'].' BYN'.'</h6>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card mb-4 text-center">
-                            <img src="img/btgTools.jpg" class="card-img-top imgCategories">
-                            <div class="card-body">
-                                <h4 class="card-title">Инструменты</h4>
-                                <p class="card-text">(Электро- и ручные)</p>
-                                <button class="btn btn-blue">Перейти</button>
-                            </div>
-                            <div class="text-center card-footer">
-                                <p>Кря-кря</p>
-                            </div>
+                    </div>';}
+                   }else{
+                        echo $pageData['error'];
+                   }
+                }else{
+                    echo
+                    '<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="card mb-4 text-center">
+                        <img src="img/btgBrick1.jpg" class="card-img-top imgCategories">
+                        <div class="card-body">
+                            <h4 class="card-title">Кирпич и блоки</h4>
+                            <p class="card-text">(Мало- и крупногабаритные)</p>
+                            <button class="btn btn-blue">Перейти</button>
+                        </div>
+                        <div class="text-center card-footer">
+                            <p>Кря-кря</p>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card mb-4 text-center">
-                            <img src="img/btgIsulation.png" class="card-img-top imgCategories">
-                            <div class="card-body">
-                                <h4 class="card-title">Утепление и изоляция</h4>
-                                <p class="card-text">(Шумоизоляционные и пенопластовые)</p>
-                                <button class="btn btn-blue">Перейти</button>
-                            </div>
-                            <div class="text-center card-footer">
-                                <p>Кря-кря</p>
-                            </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="card mb-4 text-center">
+                        <img src="img/btgTools.jpg" class="card-img-top imgCategories">
+                        <div class="card-body">
+                            <h4 class="card-title">Инструменты</h4>
+                            <p class="card-text">(Электро- и ручные)</p>
+                            <a href="/select?type=Tools" class="btn btn-blue">Перейти</a>
+                        </div>
+                        <div class="text-center card-footer">
+                            <p>Кря-кря</p>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card mb-4 text-center">
-                            <img src="img/btgFittings.jpg" class="card-img-top imgCategories">
-                            <div class="card-body">
-                                <h4 class="card-title">Арматура</h4>
-                                <p class="card-text">(разнообразные изделия из металла)</p>
-                                <button class="btn btn-blue">Перейти</button>
-                            </div>
-                            <div class="text-center card-footer">
-                                <p>Кря-кря</p>
-                            </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="card mb-4 text-center">
+                        <img src="img/btgIsulation.png" class="card-img-top imgCategories">
+                        <div class="card-body">
+                            <h4 class="card-title">Утепление и изоляция</h4>
+                            <p class="card-text">(Шумоизоляционные и пенопластовые)</p>
+                            <button class="btn btn-blue">Перейти</button>
+                        </div>
+                        <div class="text-center card-footer">
+                            <p>Кря-кря</p>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card mb-4 text-center">
-                            <img src="img/btgMixtures.jpg" class="card-img-top imgCategories">
-                            <div class="card-body">
-                                <h4 class="card-title">Строительные смеси</h4>
-                                <p class="card-text">(Готовые и сухие)</p>
-                                <button class="btn btn-blue">Перейти</button>
-                            </div>
-                            <div class="text-center card-footer">
-                                <p>Кря-кря</p>
-                            </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="card mb-4 text-center">
+                        <img src="img/btgFittings.jpg" class="card-img-top imgCategories">
+                        <div class="card-body">
+                            <h4 class="card-title">Арматура</h4>
+                            <p class="card-text">(разнообразные изделия из металла)</p>
+                            <button class="btn btn-blue">Перейти</button>
+                        </div>
+                        <div class="text-center card-footer">
+                            <p>Кря-кря</p>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card mb-4 text-center">
-                            <img src="img/btgFastener.jpg" class="card-img-top imgCategories">
-                            <div class="card-body">
-                                <h4 class="card-title">Крепёжные материалы</h4>
-                                <p class="card-text">(Оцинкованные и неоцинкованные)</p>
-                                <button class="btn btn-blue">Перейти</button>
-                            </div>
-                            <div class="text-center card-footer">
-                                <p>Кря-кря</p>
-                            </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="card mb-4 text-center">
+                        <img src="img/btgMixtures.jpg" class="card-img-top imgCategories">
+                        <div class="card-body">
+                            <h4 class="card-title">Строительные смеси</h4>
+                            <p class="card-text">(Готовые и сухие)</p>
+                            <button class="btn btn-blue">Перейти</button>
+                        </div>
+                        <div class="text-center card-footer">
+                            <p>Кря-кря</p>
                         </div>
                     </div>
-                    
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="card mb-4 text-center">
+                        <img src="img/btgFastener.jpg" class="card-img-top imgCategories">
+                        <div class="card-body">
+                            <h4 class="card-title">Крепёжные материалы</h4>
+                            <p class="card-text">(Оцинкованные и неоцинкованные)</p>
+                            <button class="btn btn-blue">Перейти</button>
+                        </div>
+                        <div class="text-center card-footer">
+                            <p>Кря-кря</p>
+                        </div>
+                    </div>
+                </div>';
+                }
+                ?>
                 </div>
                 
             </div>
