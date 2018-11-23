@@ -28,7 +28,7 @@ echo '<header>
                 <!-- Right -->
                 <form class="form-inline" method="POST">
                      <div class="md-form my-0">
-                         <input name="name" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                         <input name="name" class="form-control mr-sm-2" type="text" placeholder="Поиск" aria-label="Search">
                     </div>
                 </form>';
                 if(!empty($pageData['session']))
