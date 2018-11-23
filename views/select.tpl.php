@@ -30,7 +30,7 @@
                             '<hr>
                              <div class="list-group">
                                 <a href="?type='.$_GET['type'].'&select=price" class="list-group-item">Отсортировать по цене</a>
-                                <a href="?type='.$_GET['type'].'&select=name" class="list-group-item">Отсортировать по имени</a>
+                                <a href="?type='.$_GET['type'].'&select=name" class="list-group-item">Отсортировать по названию</a>
                              </div>
                             '
                             ?>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="text-align:center;">
+    <form action="lab1.php" method="POST">
+        <select name="type">
+            <option value="" disabled="" selected="">Ваша категория</option>
+            <option value="Bricks">Кирпич и блоки</option>
+            <option value="Tools">Инструменты</option>
+            <option value="Isulation">Утепление и изоляция</option>
+            <option value="Fittings">Арматура</option>
+            <option value="Mixtures">Строительные смеси</option>
+            <option value="Fastener">Крепёжные материалы</option>
+        </select> <br>
+        <p><input name="price" type="text" placeholder="цена вашего товара"></p>
+        <p><input name="name" type="text"  placeholder="название вашего товара"></p>
+        <p><input type="radio" name="typeOfPerson" value="Компания" checked>Физическое лицо</p>
+        <p><input type="radio" name="typeOfPerson" value="Индивидуальный предприниматель">Индивидуальный предприниматель</p>
+        <p>Получать рассылку?<input name="email" type="checkbox" value="yes"></p>
+        <p>Связаться с вами?<input name="feedBack" type="checkbox" value="yes"></p>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>

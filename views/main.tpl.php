@@ -36,7 +36,7 @@
                    }else{
                         echo $pageData['error'];
                    }
-                }else{
+                }else if(empty($_GET['about'])){
                     echo
                     '<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                     <div class="card mb-4 text-center">
@@ -44,10 +44,10 @@
                         <div class="card-body">
                             <h4 class="card-title">Кирпич и блоки</h4>
                             <p class="card-text">(Мало- и крупногабаритные)</p>
-                            <button class="btn btn-blue">Перейти</button>
+                            <a href="/select?type=Bricks" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
-                            <p>Кря-кря</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                             <a href="/select?type=Tools" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
-                            <p>Кря-кря</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -70,10 +70,10 @@
                         <div class="card-body">
                             <h4 class="card-title">Утепление и изоляция</h4>
                             <p class="card-text">(Шумоизоляционные и пенопластовые)</p>
-                            <button class="btn btn-blue">Перейти</button>
+                            <a href="/select?type=Isulation" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
-                            <p>Кря-кря</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -83,10 +83,10 @@
                         <div class="card-body">
                             <h4 class="card-title">Арматура</h4>
                             <p class="card-text">(разнообразные изделия из металла)</p>
-                            <button class="btn btn-blue">Перейти</button>
+                            <a href="/select?type=Fittings" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
-                            <p>Кря-кря</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -96,10 +96,10 @@
                         <div class="card-body">
                             <h4 class="card-title">Строительные смеси</h4>
                             <p class="card-text">(Готовые и сухие)</p>
-                            <button class="btn btn-blue">Перейти</button>
+                            <a href="/select?type=Mixtures" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
-                            <p>Кря-кря</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -109,13 +109,18 @@
                         <div class="card-body">
                             <h4 class="card-title">Крепёжные материалы</h4>
                             <p class="card-text">(Оцинкованные и неоцинкованные)</p>
-                            <button class="btn btn-blue">Перейти</button>
+                            <a href="/select?type=Fastener" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
-                            <p>Кря-кря</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>';
+                }else{
+                    include_once ABOUT_US;
+                    echo '<h2 class="text-center">'.$header.'</h2>';
+                    echo $about;
+                    echo '<p class="font-italic">'.$footer.'</p>';
                 }
                 ?>
                 </div>

@@ -21,7 +21,7 @@ echo '<header>
                         <a class="nav-link waves-effect waves-light" href="../">Главная</a>
                      </li>
                     <li class="nav-item">
-                         <a class="nav-link waves-effect waves-light">О нас</a>
+                         <a class="nav-link waves-effect waves-light" href="/?about=1">О нас</a>
                         </li>
                     </ul>
 
@@ -31,7 +31,7 @@ echo '<header>
                          <input name="name" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                     </div>
                 </form>';
-                if($pageData['session'])
+                if(!empty($pageData['session']))
                     echo '<div class="dropdown text-center text-white ml-4">
                     <a class="fa fa-user waves-effect waves-light"  id="dropdownMenu1" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false"></a>

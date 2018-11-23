@@ -49,5 +49,9 @@ class IndexController extends Controller{
     session_destroy();
     header("Location: /");
   }
+
+  public function about(){
+    $this->view->render('/views/about.tpl.php', null);
+  }
 }
 ?>
