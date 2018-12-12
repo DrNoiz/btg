@@ -4,11 +4,12 @@ class AccountModel extends Model{
         $userId=$_SESSION['userId'];
         $sql = "SELECT * FROM users WHERE id='$userId'";
         $req = $this->db->query($sql);
-        $buf=$req->fetch_row();
+        $buf=$req->fetch_assoc();
         $user=array(
-            'id'=>$buf[0],
-            'login'=>$buf[1],
-            'email'=>$buf[2]
+            'id'=>$buf['id'],
+            'type'=>$buf['type'],
+            'login'=>$buf['login'],
+            'email'=>$buf['email']
         );
         return $user;
     }
@@ -63,5 +64,28 @@ class AccountModel extends Model{
         }
         return $flag;
     }
+    public function getTable(){
+        $sql="SELECT id, login, email FROM users WHERE type IS NULL";
+        $req = $this->db->query($sql);
+        $table=array();
+        for($i=0; $i < $req->num_rows; $i++){
+            $table[$i]=$req->fetch_assoc();
+        }
+        return $table;
+    }
+    public function delUser(){
+        echo "sosi";
+        $userId=$_POST['delId'];
+        $sql="DELETE FROM users WHERE id='$userId'";
+        $getProd="SELECT * FROM products WHERE user_id='$userId'";
+        $delProd="DELETE FROM products WHERE user_id='$userId'";
+        $req=$this->db->query($getProd);
+        for($i=0; $i < $req->num_rows; $i++){
+            unlink(ROOT.$req->fetch_assoc()['picture']);
+        }
+        $req=$this->db->query($delProd);
+        $req=$this->db->query($sql);
+    }
+
 } 
 ?>

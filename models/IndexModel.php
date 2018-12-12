@@ -8,8 +8,10 @@ class IndexModel extends Model{
     
       $req = $this->db->query($sql);
       if($req->num_rows){
-        $_SESSION['user'] = $login;
-        $_SESSION['userId']=$req->fetch_row()[0];
+        $user=$req->fetch_assoc();
+        $_SESSION['user'] = $user['login'];
+        $_SESSION['userId']=$user['id'];
+        $_SESSION['userType']=$user['type'];
         return true;
       } else{
         return false;

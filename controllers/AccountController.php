@@ -17,6 +17,13 @@ class AccountController extends Controller{
                 }
             }
         $this->pageData['user']=$this->model->getUser();
+        if($this->pageData['user']['type']){
+            $this->pageData['usersTable']=$this->model->getTable();
+            if(!empty($_POST['delId'])){
+                $this->deluser();
+                unset($_POST['delId']);
+            }
+        }
         $this->pageData['products']=$this->model->getProducts();
         if(!empty($_GET)){
             if($_GET['type']=='correct'){
@@ -32,6 +39,10 @@ class AccountController extends Controller{
         if($this->model->deleteProduct()){
             header("Location: /account");  
         }
+    }
+    public function deluser(){
+        $this->model->delUser();
+        header("Location: /account"); 
     }
 }
 ?>

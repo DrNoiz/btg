@@ -22,6 +22,12 @@
                      <div class="list-group ">
                       <a class="list-group-item" data-toggle="collapse" href="#collapseNav" 
                         aria-expanded="false" aria-controls="collapseNav">Аккаунт</a>
+                      <?php
+                        if($pageData['user']['type'])
+                        echo
+                        '<a class="list-group-item" href="" data-toggle="modal" 
+                        data-target="#modalTable">Таблица пользователей</a>';
+                      ?>
                       <a class="list-group-item" data-toggle="collapse" href="#collapseNav" 
                         aria-expanded="false" aria-controls="collapseNav">Менеджер товаров</a>
                       <a href="/addproduct" class="list-group-item">Добавить товар</a>
@@ -99,6 +105,52 @@
         </div>
         
    </div>
+   <?php
+    if($pageData['user']['type']){
+        echo
+    '<div class="modal fade" id="modalTable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Таблица пользователей</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">login</th>
+            <th scope="col">email</th>
+          </tr>
+        </thead>
+        <tbody>';
+        for($i=0; $i < count($pageData['usersTable']); $i++){
+            echo
+            '<tr>
+            <th scope="row">'.$pageData['usersTable'][$i]['id'].'</th>
+            <td>'.$pageData['usersTable'][$i]['login'].'</td>
+            <td>'.$pageData['usersTable'][$i]['email'].'</td>
+            <td>
+                <form method="POST">
+                    <button class="btn-primary" name="delId" type="submit" value="'.$pageData['usersTable'][$i]['id'].'"><i class="fa fa-trash"></i></button>
+                </form>
+            </td>
+          </tr>';
+        }
+       echo '</tbody>
+      </table>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-blue" data-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>';
+    }
+   ?>
 
     <!-- SCRIPTS -->
     <!-- JQuery -->

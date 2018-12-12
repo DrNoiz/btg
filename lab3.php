@@ -21,17 +21,8 @@
   <body>
 
     <div class="container mt-5">
-        <div class="row mt-10 justify-content-center">
-            <a class="btn btn-primary" data-toggle="collapse" href="#task1" role="button" 
-                aria-expanded="false" aria-controls="task1">Задание 1</a>
-            <a class="btn btn-primary" data-toggle="collapse" href="#task2" role="button" 
-                aria-expanded="false" aria-controls="task2">Задание 2</a>
-            <a class="btn btn-primary" data-toggle="collapse" href="#task3" role="button" 
-                aria-expanded="false" aria-controls="task3">Задание 3</a>
-            <a class="btn btn-primary" data-toggle="collapse" href="#task4" role="button" 
-                aria-expanded="false" aria-controls="task4">Задание 4</a>
-        </div>
-        <div class="col-xl-6 border-right collapse" id="task1">
+        <div class="row mt-10">
+            <div class="col-xl-6 border-right">
                 <p class="h2">Выделение слов в тексте</p>
                 <form class="mr-5" method="post" >
                     <input type="hidden" name="findWords" value="1">
@@ -49,8 +40,22 @@
                         </div>
                     </div> 
                 </form>
+            
+            </div>
+            <div class="col-xl-6  mt-2">
+            <?php 
+                if($_POST&&$_POST['findWords']=="1"){ 
+                    include_once "php/main.php";
+                    echo findWord();
+                }
+            ?>
+
+            </div>
+            <hr class="clearfix w-100 mb-3  pb-3">
+            
+
         </div>
-        <div class="row mt-10 collapse" id="task2">
+        <div class="row mt-10">
             <div class="col-xl-6 border-right">
                 <p class="h2">Выделение тегов в документе</p>
            
@@ -69,8 +74,9 @@
                             <label for="textareaPrefix">Вставьте html разметку</label>
                         </div>
                     </div> 
-                </form>    
-         </div>
+                </form>
+            
+            </div>
             <div class="col-xl-6  mt-2">
             <?php 
                 if($_POST&&$_POST['findTegs']=="1"){ 
@@ -84,7 +90,7 @@
             
 
         </div>
-        <div class="row mt-10 collapse" id="task3">
+        <div class="row mt-10">
             <div class="col-xl-6 border-right">
                 <p class="h2">Статистика</p>
            
@@ -106,13 +112,24 @@
             
             </div>
             <div class="col-xl-6  mt-2">
+            <?php 
+                if($_POST&&$_POST['statistics']=="1"){ 
+                    include_once "php/main.php";
+                    $arr=statistics();
+                    echo "<p class=\"mt-2 h4\">Количество слов = ".$arr['numWords']."</p>";
+                    echo "<p class=\"mt-2 h4\">Количество изображений = ".$arr['tegImg']."</p>";
+                    echo "<p class=\"mt-2 h4\">Количество ссылок = ".$arr['tegA']."</p>";
+                    echo "<p class=\"mt-2 h4\">Количество таблиц = ".$arr['tegTable']."</p>";
+
+                }
+            ?>
 
             </div>
             <hr class="clearfix w-100 mb-3  pb-3">
             
 
         </div>
-        <div class="row mt-10 collapse" id="task4">
+        <div class="row mt-10">
             <div class="col-xl-6 border-right">
                 <p class="h2">Сортировка</p>
            
@@ -134,6 +151,17 @@
             
             </div>
             <div class="col-xl-6  mt-2">
+            <?php 
+                if($_POST&&isset($_POST['sort']){ 
+                    include_once "php/main.php";
+                    $arr=sortWords();
+                   foreach ($arr as $key => $value) {
+                    echo "<span class=\"badge red\">".$key."\t   -   \t".$value."</span><br>";
+                }
+
+                }
+            ?>
+
             </div>
             <hr class="clearfix w-100 mb-3  pb-3">
             
@@ -141,6 +169,7 @@
         </div>
         
     </div>
+
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>

@@ -31,7 +31,8 @@
             <a class="btn btn-primary" data-toggle="collapse" href="#task4" role="button" 
                 aria-expanded="false" aria-controls="task4">Задание 4</a>
         </div>
-        <div class="col-xl-6 border-right collapse" id="task1">
+        <div class="row mt-10 collapse" id="task1">
+            <div class="col-xl-6 border-right">
                 <p class="h2">Выделение слов в тексте</p>
                 <form class="mr-5" method="post" >
                     <input type="hidden" name="findWords" value="1">
@@ -49,6 +50,16 @@
                         </div>
                     </div> 
                 </form>
+            </div>
+            <div class="col-xl-6  mt-2">
+            <?php 
+                if($_POST&&!empty($_POST['findWords'])){ 
+                    include_once "php/main.php";
+                    echo findWord();
+                }
+            ?>
+            </div>
+            <hr class="clearfix w-100 mb-3  pb-3"> 
         </div>
         <div class="row mt-10 collapse" id="task2">
             <div class="col-xl-6 border-right">
@@ -73,7 +84,7 @@
          </div>
             <div class="col-xl-6  mt-2">
             <?php 
-                if($_POST&&$_POST['findTegs']=="1"){ 
+                if($_POST&&!empty($_POST['findTegs'])){ 
                     include_once "php/main.php";
                     echo allocateTegs();
                 }
@@ -106,7 +117,17 @@
             
             </div>
             <div class="col-xl-6  mt-2">
+            <?php 
+                if($_POST&&!empty($_POST['statistics'])){ 
+                    include_once "php/main.php";
+                    $arr=statistics();
+                    echo "<p class=\"mt-2 h4\">Количество слов = ".$arr['numWords']."</p>";
+                    echo "<p class=\"mt-2 h4\">Количество изображений = ".$arr['tegImg']."</p>";
+                    echo "<p class=\"mt-2 h4\">Количество ссылок = ".$arr['tegA']."</p>";
+                    echo "<p class=\"mt-2 h4\">Количество таблиц = ".$arr['tegTable']."</p>";
 
+                }
+            ?>
             </div>
             <hr class="clearfix w-100 mb-3  pb-3">
             
@@ -134,6 +155,16 @@
             
             </div>
             <div class="col-xl-6  mt-2">
+            <?php 
+                if($_POST&&!empty($_POST['sort'])){ 
+                    include_once "php/main.php";
+                    $arr=sortWords();
+                   foreach ($arr as $key => $value) {
+                    echo "<span class=\"badge red\">".$key."\t   -   \t".$value."</span><br>";
+                }
+
+                }
+            ?>
             </div>
             <hr class="clearfix w-100 mb-3  pb-3">
             
