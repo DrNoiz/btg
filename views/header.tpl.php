@@ -3,7 +3,7 @@ echo '<header>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark blue scrolling-navbar">
     <div class="container-fluid">
          <!-- Brand -->
-            <a class="navbar-brand waves-effect waves-light">
+            <a class="navbar-brand waves-effect waves-light toggle-button">
                 <strong class="white-text">BtG</strong>
             </a>
             <!-- Collapse -->
@@ -68,12 +68,12 @@ $modalContent=
             <div class="md-form mb-5">
                 <i class="fa fa-envelope prefix grey-text"></i>
                 <input name="login" type="text" id="defaultForm-text" class="form-control validate">
-                <label data-error="wrong" data-success="right" for="defaultForm-text">Логин</label>
+                <label data-error="wrong" data-success="Хорошо" for="defaultForm-text">Логин</label>
             </div>
             <div class="md-form mb-4">
                 <i class="fa fa-lock prefix grey-text"></i>
                 <input name="password" type="password" id="defaultForm-pass" class="form-control validate">
-                <label data-error="wrong" data-success="right" for="defaultForm-pass">Пароль</label>
+                <label data-error="wrong" data-success="Хорошо" for="defaultForm-pass">Пароль</label>
             </div>
 
         </div>

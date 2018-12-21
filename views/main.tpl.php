@@ -29,7 +29,8 @@
                             <img src="'.$pageData['products'][$i]['picture'].'" class="card-img-top imgCategories">
                             <div class="card-body">
                                 <h4 class="card-title">'.$pageData['products'][$i]['name'].'</h4>
-                                <h6 class="text-right">'.$pageData['products'][$i]['price'].' BYN'.'</h6>
+                                <a href="/product?id='.$pageData['products'][$i]['id'].'" class="btn btn-blue text-center">Узнать больше</a>
+                                <h6 class="text-right">'.$pageData['products'][$i]['price'].' BYN</h6>
                             </div>
                         </div>
                     </div>';}
@@ -44,7 +45,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Кирпич и блоки</h4>
                             <p class="card-text">(Мало- и крупногабаритные)</p>
-                            <a href="/select?type=Bricks" class="btn btn-blue">Перейти</a>
+                            <a href="/select?type=1" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
                             <p></p>
@@ -57,7 +58,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Инструменты</h4>
                             <p class="card-text">(Электро- и ручные)</p>
-                            <a href="/select?type=Tools" class="btn btn-blue">Перейти</a>
+                            <a href="/select?type=2" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
                             <p></p>
@@ -70,7 +71,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Утепление и изоляция</h4>
                             <p class="card-text">(Шумоизоляционные и пенопластовые)</p>
-                            <a href="/select?type=Isulation" class="btn btn-blue">Перейти</a>
+                            <a href="/select?type=3" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
                             <p></p>
@@ -83,7 +84,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Арматура</h4>
                             <p class="card-text">(разнообразные изделия из металла)</p>
-                            <a href="/select?type=Fittings" class="btn btn-blue">Перейти</a>
+                            <a href="/select?type=4" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
                             <p></p>
@@ -96,7 +97,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Строительные смеси</h4>
                             <p class="card-text">(Готовые и сухие)</p>
-                            <a href="/select?type=Mixtures" class="btn btn-blue">Перейти</a>
+                            <a href="/select?type=5" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
                             <p></p>
@@ -109,7 +110,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Крепёжные материалы</h4>
                             <p class="card-text">(Оцинкованные и неоцинкованные)</p>
-                            <a href="/select?type=Fastener" class="btn btn-blue">Перейти</a>
+                            <a href="/select?type=6" class="btn btn-blue">Перейти</a>
                         </div>
                         <div class="text-center card-footer">
                             <p></p>

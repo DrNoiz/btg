@@ -8,8 +8,8 @@ class AccountController extends Controller{
     public function index(){
         $this->pageTpl='/views/account.tpl.php';
         $this->pageData['title']="Ваш аккаунт";
-        if(empty($_SESSION['user'])) {
-        $this->pageData['accMsg']="Вы не вошли на сайте";
+        if(empty($_SESSION['user'])){
+            $this->pageData['accMsg']="Вы не вошли на сайте";
         }else{
             if(!empty($_POST['correct'])){
                 if($this->model->correctProduct()){

@@ -9,12 +9,21 @@ class AddproductModel extends Model{
         $name=strip_tags($_POST['name']);
         $price=strip_tags($_POST['price']);
         $type=$_POST['type'];
-        $subtype=$_POST['subtype'];
         $about=strip_tags($_POST['prodAbout']);
 
-        $sql="INSERT INTO products(id, user_id, name, price, type, subtype, about, picture)
-        VALUES(NULL, '$id','$name','$price','$type','$subtype','$about','$newFileName')";
+        $sql="INSERT INTO products(id, user_id, name, price, type, about, picture)
+        VALUES(NULL, '$id','$name','$price','$type', '$about','$newFileName')";
         $this->db->query($sql);
+    }
+
+    public function getSubTypes(){
+        $type=array();
+        $sql="SELECT * from products_type WHERE pretype IS NOT NULL";
+        $req=$this->db->query($sql);
+        for($i=0; $i<$req->num_rows; $i++){
+            $type[$i]=$req->fetch_assoc();
+        }
+        return $type;
     }
 }
 ?>

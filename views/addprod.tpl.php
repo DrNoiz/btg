@@ -15,29 +15,12 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+<?php if(empty($pageData['addMsg'])) echo '<a href="/account" class="btn btn-blue text-center">В аккаунт</a>'; ?>
    <div class="row justify-content-center">
        <div class="col-xl-10">
         <?php
         if(empty($pageData['addMsg'])){
             echo '<form class="p-5" method="POST" enctype="multipart/form-data">';
-            if(empty($_POST)){
-            echo<<<FormContent
-    <p class="h4 mb-4 text-center">Добавление товара</p>
-
-    <label for="select">Выбирете категорию</label>
-    <select name="type" class="browser-default custom-select mb-4" id="select">
-        <option value="" disabled="" selected="">Ваша категория</option>
-        <option value="Bricks">Кирпич и блоки</option>
-        <option value="Tools">Инструменты</option>
-        <option value="Isulation">Утепление и изоляция</option>
-        <option value="Fittings">Арматура</option>
-        <option value="Mixtures">Строительные смеси</option>
-        <option value="Fastener">Крепёжные материалы</option>
-    </select>
-
-    <button class="btn btn-blue btn-block my-4" type="submit">Далее</button>
-FormContent;
-            }else{
                 echo<<<FormContent
                 <p class="h4 mb-4 text-center">Добавление товара</p>
 
@@ -48,16 +31,15 @@ FormContent;
                 <input name="price" type="text" id="priceInput" class="form-control mb-4" placeholder="цена вашего товара">
             
                 <label for="select">Выбирете категорию</label>
-                <select name="subtype" class="browser-default custom-select mb-4" id="select">
+                <select name="type" class="browser-default custom-select mb-4" id="select">
                     <option value="" disabled="" selected="">Ваша категория</option>
 FormContent;
-                for($i=1; $i<count($pageData['products'][$_POST['type']])+1; $i++){
-                    echo '<option value="'.$i.'">'.$pageData['products'][$_POST['type']][$i].'</option>';
+                for($i=0; $i<count($pageData['subtypes']); $i++){
+                    echo '<option value="'.$pageData['subtypes'][$i]['id_type'].'">'.$pageData['subtypes'][$i]['type'].'</option>';
                 }
                 echo
                 '
                 </select>
-                <input type="hidden" name="type" value="'.$_POST['type'].'">
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Файл</span>
@@ -72,11 +54,10 @@ FormContent;
                 <textarea name="prodAbout" id="textarea" class="form-control mb-4" placeholder="Описание вашего товара"></textarea>
             
                 <button class="btn btn-blue btn-block my-4" type="submit">Добавить</button>';
-            }
         echo '</form>';
         }else{
             echo '<div class="text-center">'.$pageData['addMsg'].'
-            <a href="/account" class="btn btn-blue text-center">На главную</a>
+            <a href="/account" class="btn btn-blue text-center">В аккаунт</a>
             </div>';
         }
     ?>
@@ -91,5 +72,9 @@ FormContent;
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script>
+        $('.custom-file-input').on('change',function(e){
+        $(this).next('.custom-file-label').addClass("selected").text(e.target.files[0].name);})
+    </script>
 </body>
 </html>

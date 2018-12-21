@@ -4,13 +4,7 @@ class AccountModel extends Model{
         $userId=$_SESSION['userId'];
         $sql = "SELECT * FROM users WHERE id='$userId'";
         $req = $this->db->query($sql);
-        $buf=$req->fetch_assoc();
-        $user=array(
-            'id'=>$buf['id'],
-            'type'=>$buf['type'],
-            'login'=>$buf['login'],
-            'email'=>$buf['email']
-        );
+        $user=$req->fetch_assoc();
         return $user;
     }
     public function getProducts(){
@@ -19,12 +13,7 @@ class AccountModel extends Model{
         $req = $this->db->query($sql);
         $products=array();
         for($i=0; $i<$req->num_rows; $i++){
-            $buf=$req->fetch_row();
-            $products[$i]=array(
-                'id'=>$buf[0],
-                'name'=>$buf[2],
-                'picture'=>$buf[7]
-            );
+            $products[$i]=$req->fetch_assoc();
         }
         return $products;
     }
@@ -36,9 +25,9 @@ class AccountModel extends Model{
         $sql="SELECT * FROM products WHERE id='$prodId'";
         $del="DELETE FROM products WHERE id='$prodId'";
         $req = $this->db->query($sql);
-        $currentProd=$req->fetch_row();
-        if($userId==$currentProd[1]){
-            unlink(ROOT.$currentProd[7]);
+        $currentProd=$req->fetch_assoc();
+        if($userId==$currentProd['user_id']){
+            unlink(ROOT.$currentProd['picture']);
             $this->db->query($del);
             $flag=true;
         }
